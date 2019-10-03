@@ -2,6 +2,15 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+axios
+
+.get("https://api.github.com/users/jregner20")
+.then(response => {
+  console.log(response);
+  response.data
+});
+
+
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -45,6 +54,13 @@ const followersArray = [];
 </div>
 
 */
+
+// function domCard(obj){
+//   const card = document.createElement('div');
+//   const userImg = document.createElement('img');
+//   const userH = document.createElement('h3');
+//   const nameP = document.createElement
+// }
 
 /* List of LS Instructors Github username's: 
   tetondan
