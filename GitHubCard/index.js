@@ -33,7 +33,7 @@ axios
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'bensolt'];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -97,7 +97,8 @@ function domCard(obj){
   userImg.src = obj.avatar_url;
   unameP.textContent = obj.login;
   locP.textContent = obj.location;
-  gitAdd.textContent = obj.htmt_url;
+  gitAdd.textContent = obj.html_url;
+  gitAdd.href = obj.html_url;
   flwersP.textContent = obj.followers;
   flwingP.textContent = obj.following;
   bioP.textContent = obj.bio;
@@ -109,7 +110,13 @@ function domCard(obj){
 
 }
 
-
+followersArray.forEach(elem => {
+  axios.get(`https://api.github.com/users/${elem}`)
+.then(response => {
+  console.log(response);
+  domCard(response.data);
+});
+})
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
