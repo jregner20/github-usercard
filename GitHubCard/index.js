@@ -7,7 +7,7 @@ axios
 .get("https://api.github.com/users/jregner20")
 .then(response => {
   console.log(response);
-  response.data
+  domCard(response.data);
 });
 
 
@@ -56,6 +56,7 @@ const followersArray = [];
 */
 
 function domCard(obj){
+
   // Elements
 
   const card = document.createElement('div');
@@ -90,10 +91,24 @@ function domCard(obj){
   userH.classList.add('name');
   unameP.classList.add('username');
 
+  // Text Content
 
+  userH.textContent = obj.name;
+  userImg.src = obj.avatar_url;
+  unameP.textContent = obj.login;
+  locP.textContent = obj.location;
+  gitAdd.textContent = obj.htmt_url;
+  flwersP.textContent = obj.followers;
+  flwingP.textContent = obj.following;
+  bioP.textContent = obj.bio;
+
+  const selector = document.querySelector(".cards");
+  selector.appendChild(card);
 
   return card;
+
 }
+
 
 /* List of LS Instructors Github username's: 
   tetondan
