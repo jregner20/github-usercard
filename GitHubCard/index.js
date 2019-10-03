@@ -2,6 +2,15 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+axios
+
+.get("https://api.github.com/users/jregner20")
+.then(response => {
+  console.log(response);
+  domCard(response.data);
+});
+
+
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -24,7 +33,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'bensolt'];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -46,6 +55,68 @@ const followersArray = [];
 
 */
 
+function domCard(obj){
+
+  // Elements
+
+  const card = document.createElement('div');
+  const userImg = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const userH = document.createElement('h3');
+  const unameP = document.createElement('p');
+  const locP = document.createElement('p');
+  const proP = document.createElement('p');
+  const gitAdd = document.createElement('a');
+  const flwersP = document.createElement('p');
+  const flwingP = document.createElement('p');
+  const bioP = document.createElement('p');
+
+  // Structure
+
+  card.appendChild(userImg);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(userH);
+  cardInfo.appendChild(unameP);
+  cardInfo.appendChild(locP);
+  cardInfo.appendChild(proP);
+  proP.appendChild(gitAdd);
+  cardInfo.appendChild(flwersP);
+  cardInfo.appendChild(flwingP);
+  cardInfo.appendChild(bioP);
+
+  // Classes
+
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  userH.classList.add('name');
+  unameP.classList.add('username');
+
+  // Text Content
+
+  userH.textContent = obj.name;
+  userImg.src = obj.avatar_url;
+  unameP.textContent = obj.login;
+  locP.textContent = obj.location;
+  gitAdd.textContent = obj.html_url;
+  gitAdd.href = obj.html_url;
+  flwersP.textContent = obj.followers;
+  flwingP.textContent = obj.following;
+  bioP.textContent = obj.bio;
+
+  const selector = document.querySelector(".cards");
+  selector.appendChild(card);
+
+  return card;
+
+}
+
+followersArray.forEach(elem => {
+  axios.get(`https://api.github.com/users/${elem}`)
+.then(response => {
+  console.log(response);
+  domCard(response.data);
+});
+})
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
