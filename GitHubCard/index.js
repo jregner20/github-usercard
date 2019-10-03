@@ -55,12 +55,45 @@ const followersArray = [];
 
 */
 
-// function domCard(obj){
-//   const card = document.createElement('div');
-//   const userImg = document.createElement('img');
-//   const userH = document.createElement('h3');
-//   const nameP = document.createElement
-// }
+function domCard(obj){
+  // Elements
+
+  const card = document.createElement('div');
+  const userImg = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const userH = document.createElement('h3');
+  const unameP = document.createElement('p');
+  const locP = document.createElement('p');
+  const proP = document.createElement('p');
+  const gitAdd = document.createElement('a');
+  const flwersP = document.createElement('p');
+  const flwingP = document.createElement('p');
+  const bioP = document.createElement('p');
+
+  // Structure
+
+  card.appendChild(userImg);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(userH);
+  cardInfo.appendChild(unameP);
+  cardInfo.appendChild(locP);
+  cardInfo.appendChild(proP);
+  proP.appendChild(gitAdd);
+  cardInfo.appendChild(flwersP);
+  cardInfo.appendChild(flwingP);
+  cardInfo.appendChild(bioP);
+
+  // Classes
+
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  userH.classList.add('name');
+  unameP.classList.add('username');
+
+
+
+  return card;
+}
 
 /* List of LS Instructors Github username's: 
   tetondan
